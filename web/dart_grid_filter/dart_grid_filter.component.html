@@ -1,0 +1,51 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Пол</th>
+        <th>Департамент</th>
+        <th>Город</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+        <div *ngFor="let genKey of uniqueGenders.keys">
+          <div class="form-group" *ngIf="uniqueGenders[genKey].count > 0">
+             <div class="checkbox">
+              <label>
+                <input type="checkbox" [ngModel]="uniqueGenders[genKey].active" (change)="toggleFilter($event, uniqueGenders[genKey])"  />
+                {{ genKey }}<b>({{ uniqueGenders[genKey].count }})</b>
+              </label>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div *ngFor="let depKey of uniqueDepartments.keys">
+          <div class="form-group" *ngIf="uniqueDepartments[depKey].count > 0">
+             <div class="checkbox">
+              <label>
+                <input type="checkbox" [ngModel]="uniqueDepartments[depKey].active" (change)="toggleFilter($event, uniqueDepartments[depKey])"  />
+                {{ depKey }}<b>({{ uniqueDepartments[depKey].count }})</b>
+              </label>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group" *ngFor="let cityKey of uniqueCities.keys">
+          <div class="form-group" *ngIf="uniqueCities[cityKey].count > 0">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"  [ngModel]="uniqueCities[cityKey].active" (change)="toggleFilter($event, uniqueCities[cityKey])"  />
+                {{ cityKey }}<b>({{ uniqueCities[cityKey].count }})</b>
+              </label>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
